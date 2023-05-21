@@ -11,6 +11,7 @@ import { useStoreTodo } from "../hooks/useStoreTodo";
 import { useAppDispatch, useAppSelector } from "../redux";
 import ServerErrorModal from "./modal-errors";
 import { showAlert } from "../redux/slices/alert";
+import { removeTodoSelected } from "../redux/slices/todo";
 dayjs.extend(localizedFormat);
 dayjs.locale("es");
 
@@ -19,6 +20,7 @@ export const TodoForm = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     watch,
     formState: { errors },
   } = useForm<CreateTodo>();
@@ -52,6 +54,7 @@ export const TodoForm = () => {
       setValue("description", "");
       setValue("completed", false);
       setValue("date", "");
+      reset();
       setDatepickerDate(null);
     }
   }, [todo.todoSelected]);
@@ -139,15 +142,30 @@ export const TodoForm = () => {
         </div>
         <button
           type="submit"
-          className="mt-auto h-[40px] inline-flex justify-center rounded-md border border-transparent bg-blue-600
+          className="mt-auto mb-2 h-[40px] inline-flex justify-center rounded-md border border-transparent bg-blue-600
           text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
            focus-visible:ring-offset-2"
           disabled={isFetching}
         >
           <span className="mt-1 text-xl font-normal">
-            {todo.todoSelected ? "Editar" : "Guardar"} tarea
+            {todo.todoSelected ? "Guardar cambios" : "Guardar"} 
           </span>
         </button>
+        {todo.todoSelected && (
+          <button
+            type="button"
+            onClick={() => {
+              dispatcher(removeTodoSelected());
+              reset();
+            }}
+            className=" h-[40px] inline-flex justify-center rounded-md border border-transparent bg-red-600
+                text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500
+                 focus-visible:ring-offset-2"
+            disabled={isFetching}
+          >
+            <span className="mt-1 text-xl font-normal">Cancelar edición</span>
+          </button>
+        )}
       </form>
 
       {error && error.response?.data && (

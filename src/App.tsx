@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "./redux";
 import { removeAlert } from "./redux/slices/alert";
 import { Tab } from "@headlessui/react";
 import { setSelectedTab } from "./redux/slices/tab";
+import { removeTodoSelected } from "./redux/slices/todo";
 
 function App() {
   const { alert,tab } = useAppSelector((state) => state);
@@ -18,7 +19,8 @@ function App() {
     if (alert.modal && alert.modal.show) {
       setTimeout(() => {
         dispatcher(removeAlert());
-      }, 4000);
+        dispatcher(removeTodoSelected())
+      }, 2500);
     }
   }, [alert.modal]);
 

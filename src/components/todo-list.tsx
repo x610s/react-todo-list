@@ -81,6 +81,11 @@ export const TodoList = () => {
                     onClick={() => {
                       dispatcher(setTodoSelected(t.id));
                       dispatcher(setSelectedTab(0))
+                      //Scrolear al principio por si está en vista mobile no tenga que subir
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                    });
                     }}
                   >
                                        <FontAwesomeIcon icon={faEdit} />
