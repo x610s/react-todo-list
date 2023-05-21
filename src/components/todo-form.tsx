@@ -82,7 +82,7 @@ export const TodoForm = () => {
           </h2>
         </div>
         {/*  */}
-        <div className="mb-4 ">
+        <div className="mb-5">
           <label className="font-semibold text-lg text-blue-600">Título</label>
           <TextField
             id="outlined-basic"
