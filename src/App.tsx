@@ -79,7 +79,7 @@ function App() {
                   <Tab
                     className={`w-full py-2.5 text-sm font-medium leading-5 text-white
                 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 
-                 ${(tab.tabSelected == 0 ? 'bg-white text-slate-700 rounded-md' : '')} `}
+                 ${(tab.tabSelected == 0 ? 'bg-white text-slate-600 rounded-md' : '')} `}
                  onClick={()=>dispatcher(setSelectedTab(0))}
                   >
                    Agregar Tarea
@@ -87,7 +87,7 @@ function App() {
                   <Tab
                   className={`w-full py-2.5 text-sm font-medium leading-5 text-white
                   ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 
-                   ${(tab.tabSelected  == 1 ? 'bg-white text-slate-700  rounded-md' : '')}`}
+                   ${(tab.tabSelected  == 1 ? 'bg-white text-slate-600  rounded-md' : '')}`}
                  onClick={()=>dispatcher(setSelectedTab(1))}
                   >
                     Ver Tareas
