@@ -6,7 +6,13 @@ import { useState } from "react";
 import { removeTodoSelected, setTodoSelected } from "../redux/slices/todo";
 import { formatDate } from "../helpers/formatDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCancel, faCheck, faEdit, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCancel,
+  faCheck,
+  faEdit,
+  faEye,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { setSelectedTab } from "../redux/slices/tab";
 export const TodoList = () => {
   const dispatcher = useAppDispatch();
@@ -24,8 +30,10 @@ export const TodoList = () => {
   return (
     <div>
       {todo.todoItems != null && !isFetching && todo.todoItems.length > 0 ? (
-        <div className="flex flex-col overflow-y-auto hide-scrollbar rounded bg-white max-h-[560px] 
-        mt-5 md:mt-0 md:min-h-[560px]  min-h-[438px]">
+        <div
+          className="flex flex-col overflow-y-auto hide-scrollbar rounded bg-white max-h-[560px] 
+        mt-5 md:mt-0 md:min-h-[560px]  min-h-[438px]"
+        >
           {todo.todoItems.map((t: Todo) => {
             return (
               <div
@@ -72,7 +80,7 @@ export const TodoList = () => {
                       settodoViewSelected(t);
                     }}
                   >
-                                       <FontAwesomeIcon icon={faEye} />
+                    <FontAwesomeIcon icon={faEye} />
                   </div>
                   <div
                     className="border border-2 px-1.5 rounded ml-2 text-green-500 cursor-pointer
@@ -80,15 +88,15 @@ export const TodoList = () => {
                     title="Editar Tarea"
                     onClick={() => {
                       dispatcher(setTodoSelected(t.id));
-                      dispatcher(setSelectedTab(0))
+                      dispatcher(setSelectedTab(0));
                       //Scrolear al principio por si está en vista mobile no tenga que subir
                       window.scrollTo({
                         top: 0,
-                        behavior: 'smooth',
-                    });
+                        behavior: "smooth",
+                      });
                     }}
                   >
-                                       <FontAwesomeIcon icon={faEdit} />
+                    <FontAwesomeIcon icon={faEdit} />
                   </div>
                   <div
                     className="border border-2 px-1.5 rounded ml-2 text-red-500 cursor-pointer
@@ -100,7 +108,7 @@ export const TodoList = () => {
                       dispatcher(removeTodoSelected());
                     }}
                   >
-                       <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon={faTrash} />
                   </div>
                 </div>
               </div>
