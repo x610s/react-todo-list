@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CreateTodo } from "../interfaces/createTodo";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Checkbox, TextField } from "@mui/material";
+import { Checkbox, TextField, TextareaAutosize } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -86,7 +86,7 @@ export const TodoForm = () => {
           <label className="font-semibold text-lg text-blue-600">Título</label>
           <TextField
             id="outlined-basic"
-            className="w-full bg-white"
+            className="w-full bg-white rounded"
             {...register("title", { required: true })}
           />
           {errors.title && (
@@ -100,9 +100,9 @@ export const TodoForm = () => {
           <label className="font-semibold text-lg text-blue-600">
             Descripción
           </label>
-          <TextField
+          <TextareaAutosize
             id="outlined-basic"
-            className="w-full  bg-white outline-none"
+            className="w-full  bg-white outline-none p-4 rounded border border-[#C4C4C4] max-h-[100px] hover:border-[#333] "
             {...register("description", { required: true, minLength: 10 })}
           />
           {errors.description && (
@@ -116,7 +116,7 @@ export const TodoForm = () => {
           <label className="font-semibold text-lg text-blue-600">Fecha</label>
           <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
             <DatePicker
-              className="w-full  bg-white outline-none"
+              className="w-full  bg-white outline-none rounded"
               value={datePickerdate}
               {...register("date", { required: true })}
               onChange={(newValue) => {

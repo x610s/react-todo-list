@@ -57,8 +57,8 @@ export const TodoViewModal = ({
                     <span className="font-bold mr-2 ">Titulo: </span>
                     <span className="">{todo.title} </span>
                   </div>
-                  <div className="flex flex-col border-b ">
-                    <span className="font-bold mr-2 ">Descripción: </span>
+                  <div className="flex flex-col border-b break-words">
+                    <span className="font-bold mr-2">Descripción: </span>
                     <span className="">
                     {todo.description}
                     </span>
