@@ -77,20 +77,20 @@ function App() {
                   className="justify-center flex flex-row flex space-x-1 rounded-md bg-slate-800 p-2"
                 >
                   <Tab
-                    className={`w-full py-2.5 text-sm font-medium leading-5 text-white
+                    className={`w-full py-2.5 text-sm font-medium leading-5 
                 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 
-                 ${(tab.tabSelected == 0 ? 'bg-white text-slate-600 rounded-md' : '')} `}
+                 ${(tab.tabSelected == 0 ? 'bg-white text-slate-700 rounded' : 'text-white')} `}
                  onClick={()=>dispatcher(setSelectedTab(0))}
                   >
-                   Agregar Tarea
+                   Agregar Tarea 
                   </Tab>
                   <Tab
-                  className={`w-full py-2.5 text-sm font-medium leading-5 text-white
+                  className={`w-full py-2.5 text-sm font-medium leading-5 
                   ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 
-                   ${(tab.tabSelected  == 1 ? 'bg-white text-slate-600  rounded-md' : '')}`}
+                   ${(tab.tabSelected  == 1 ? 'bg-white text-slate-700  rounded-md' : 'text-white')}`}
                  onClick={()=>dispatcher(setSelectedTab(1))}
                   >
-                    Ver Tareas
+                    Ver Tareas 
                   </Tab>
                 </Tab.List>
                 <Tab.Panels>
