@@ -7,13 +7,14 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { addTodos, markAsReady, removeTodo } from "../redux/slices/todo";
 import { Todo } from "../interfaces/todo";
 import { ServerErrorResponse } from "../interfaces/ServerErrorResponse";
+import { port } from "../constants/constants";
 
 export const useFetchTodos = () => {
   const dispatcher = useAppDispatch();
 
   const { isLoading, error, data, isFetching, refetch, isRefetching } =
     useQuery<void, AxiosError>(["getTodos"], async (): Promise<void> => {
-      const res = await axios.get(`http://localhost:3000/todo`);
+      const res = await axios.get(`http://localhost:${port}/todo`);
       if (res.status == 200) {
         dispatcher(addTodos(res.data));
       }
@@ -24,7 +25,7 @@ export const useFetchTodos = () => {
     const res = await axios.delete<
       AxiosResponse<void>,
       AxiosError<ServerErrorResponse>
-    >(`http://localhost:3000/todo/${id}`);
+    >(`http://localhost:${port}/todo/${id}`);
     if (res.status == 200) {
       dispatcher(removeTodo(id));
     }
@@ -35,7 +36,7 @@ export const useFetchTodos = () => {
     const res = await axios.put<
       AxiosResponse<Todo>,
       AxiosError<ServerErrorResponse>
-    >(`http://localhost:3000/todo/markAsReady/${id}`);
+    >(`http://localhost:${port}/todo/markAsReady/${id}`);
     if (res.status == 200) {
       dispatcher(markAsReady(id));
     }
