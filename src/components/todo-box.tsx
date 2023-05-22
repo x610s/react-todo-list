@@ -31,10 +31,10 @@ export const TodoBox = ({
     <div
       className={`${
         todo.completed ? "bg-green-50" : "bg-white"
-      }  p-4 border-b flex flex-row justify-between md:grid-cols-2 grid grid-cols-1`}
+      }  p-4 border-b flex flex-row justify-between lg:grid-cols-2 md:grid-cols-1 grid grid-cols-1 `}
     >
-      <div className="flex flex-col">
-        <span>{todo.title}</span>
+      <div className="flex flex-col  ">
+        <span className="text-ellipsis overflow-hidden max-h-[23px] ">{todo.title}</span>
         <small className="text-slate-400">{formatDate(todo.date)}</small>
       </div>
       <div className="flex flex-row  sm:justify-center justify-center md:justify-end    md:mt-3  items-center">

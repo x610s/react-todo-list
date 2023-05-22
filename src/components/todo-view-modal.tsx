@@ -53,7 +53,7 @@ export const TodoViewModal = ({
                   </span>
                 </Dialog.Title>
                 <div className="my-6 flex flex-col">
-                  <div className="flex flex-row border-b">
+                  <div className="flex flex-row border-b break-words">
                     <span className="font-bold mr-2 ">Titulo: </span>
                     <span className="">{todo.title} </span>
                   </div>
